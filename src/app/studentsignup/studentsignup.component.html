@@ -1,0 +1,110 @@
+<div class="container">
+
+  <div style="float: right;">
+    <table class="table">
+      <tr>
+        <th >Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <td>Age</td>
+        <th>Image</th>
+        <th>Country</th>
+      </tr>
+      <tr >
+        <td><a routerLink='/studentDetails'routerLinkActive = "active">{{nameValue}}</a></td>
+        <td>{{emailvalue}}</td>
+        <td>{{dob}}</td>
+        <td>{{dob | age}}</td>
+        <td>{{image}}</td>
+        <td>{{countryValue}}</td>
+      </tr>
+    </table>
+  </div>
+  <div >
+    <form [formGroup]="RegistrationForm" class="form-horizontal">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-titel">Student Community</h3>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="form-group" [ngClass]="{'has-error':RegistrationForm.get('name').errors &&
+        (RegistrationForm.get('name').touched || RegistrationForm.get('name').dirty)}">
+          <label class="col-sm-2 control-label" for="name">Name</label>
+  
+          <div class="col-sm-6" >
+            <input type="text" class="form-control" formControlName="name" (blur)='getnamemathod()' placeholder="">
+          </div>
+        </div>
+
+      <div class="panel-body">
+        <div class="form-group" [ngClass]="{'has-danger':RegistrationForm.get('email').errors &&
+        (RegistrationForm.get('email').touched || RegistrationForm.get('email').dirty)}">
+          <label class="col-sm-2 control-label" for="email">Email</label>
+  
+          <div class="col-sm-6" >
+            <input type="email" class="form-control" formControlName="email" (blur)='getnamemathod()'>
+          </div>
+        </div>
+
+        
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="dob">Date of Birth</label>
+      
+              <div class="col-sm-6">
+                <input type="text" class="form-control" formControlName="dob" (blur)='getnamemathod()'>
+              </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="image">Image</label>
+        
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" formControlName="image" (blur)='getnamemathod()'>
+                </div>
+              </div>
+  
+  
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Country</label>
+  
+          <div class="col-sm-6">
+              <select id="selectedCountry" formControlName="selectedCountry" (blur)='getnamemathod()'>
+                <option value="0">--Select--</option>
+                <option *ngFor="let country of countries" value={{country.name}}>{{country.name}}</option>
+              </select>
+            
+          </div>
+          <div class="form-group" style="visibility: hidden;">
+            <label class="col-sm-2 control-label" for="signupDate">Image</label>
+    
+            <div class="col-sm-6">
+              <input type="text" class="form-control" formControlName="signupDate" (blur)='getnamemathod()'>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+        <div class="panel-footer">
+            <div  class="btn-toolbar ">
+                <button class="btn btn-primary text-center" style="margin-right: 10px;" type="submit" (click)='onSubmit()'>SignUp</button>
+                <button class="btn btn-primary text-center" type="submit"  routerLink='/admin' routerLinkActive = "active">Admin</button>
+             </div>
+            
+        </div>
+
+        
+       
+  
+  
+      </div>
+
+      
+      
+    </form>
+
+  </div>
+    
+    
+</div>
